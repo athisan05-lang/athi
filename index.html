@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für Abisha ❤️</title>
+    <style>
+        body { 
+            font-family: 'Comic Sans MS', 'cursive', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #fff0f3; 
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 30px; 
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2); 
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            margin: 20px;
+        }
+        .romantic-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 4px solid #ff758f;
+        }
+        h1 { color: #ff4d6d; font-size: 2rem; margin-bottom: 10px; }
+        .date { font-size: 1.1rem; color: #ff758f; margin-bottom: 25px; font-weight: bold; }
+        .buttons { display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; }
+        button { 
+            padding: 15px 30px; 
+            font-size: 18px; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { background-color: #adb5bd; color: white; }
+        #celebration { display: none; z-index: 20; }
+        .heart { position: absolute; color: #ffb3c1; font-size: 20px; animation: float 5s infinite linear; opacity: 0.7; pointer-events: none; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="player" style="display:none"></div>
+
+<div class="container" id="mainContainer">
+    <img src="IMG_6833.jpg" alt="Wir im Herz" class="romantic-img">
+    
+    <h1>Abisha, will you be my Valentine? 🌹</h1>
+    <p class="date">✨ 15.02.2025 um 10:00 Uhr ✨</p>
+    
+    <div class="buttons" id="buttonGroup">
+        <button id="yesBtn" onclick="sayYes()">Ja, ich will! 🥰</button>
+        <button id="noBtn" onclick="sayNo()">Nein</button>
+    </div>
+</div>
+
+<div id="celebration" class="container">
+    <img src="IMG_6833.jpg" alt="Happy" class="romantic-img">
+    <h1>Juhuu, Abisha! ❤️</h1>
+    <p style="font-style: italic; color: #ff4d6d;">"Thangamey unnai thaan..." 🎵</p>
+    <p>Ich freue mich riesig auf unser Date!</p>
+    <p><b>15.02. | 10:00 Uhr</b></p>
+</div>
+
+<script>
+    // YouTube API Integration
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '0',
+            width: '0',
+            videoId: 'S3A59NPrCio', // YouTube ID für Thangamey
+            playerVars: {
+                'autoplay': 0,
+                'controls': 0
+            }
+        });
+    }
+
+    // Hintergrund-Herzen Animation
+    function createHearts() {
+        for (let i = 0; i < 25; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.body.appendChild(heart);
+        }
+    }
+    createHearts();
+
+    let noCount = 0;
+    const phrases = ["Echt jetzt?", "Überleg mal kurz...", "Thangam? 🥺", "Falscher Button!", "Guck mal nach links...", "Ja ist rechts!"];
+
+    function sayNo() {
+        // Musik starten beim ersten Klick
+        if (player && player.playVideo) player.playVideo();
+        
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        
+        if (noCount < phrases.length) {
+            noBtn.innerText = phrases[noCount];
+        }
+        
+        let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        yesBtn.style.fontSize = (currentSize + 12) + 'px';
+        noCount++;
+        
+        if (noCount > 5) noBtn.style.display = 'none';
+    }
+
+    function sayYes() {
+        // Musik starten
+        if (player && player.playVideo) player.playVideo();
+        
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('celebration').style.display = 'block';
+        
+        // Extra Konfetti-Effekt
+        setInterval(createHearts, 1000);
+    }
+</script>
+
+</body>
+</html>
