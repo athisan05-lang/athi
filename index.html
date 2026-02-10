@@ -5,68 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Für meine Chellam ❤️</title>
     <style>
-        body { 
-            font-family: 'Comic Sans MS', 'cursive', sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            background: radial-gradient(circle, #fff0f3 0%, #ffdde1 100%); 
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .container { 
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 40px; 
-            border-radius: 40px; 
-            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.3); 
-            max-width: 450px;
-            width: 90%;
-            z-index: 10;
-            margin: 20px;
-            border: 3px solid #ffb3c1;
-        }
-        .romantic-img {
-            width: 100%;
-            border-radius: 25px;
-            margin-bottom: 25px;
-            border: 5px solid #ff758f;
-            transition: transform 0.3s ease;
-        }
-        .romantic-img:hover { transform: scale(1.02); }
-        h1 { color: #ff4d6d; font-size: 2.2rem; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        body { font-family: 'Comic Sans MS', cursive; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: radial-gradient(circle, #fff0f3 0%, #ffdde1 100%); text-align: center; overflow-x: hidden; }
+        .container { background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 40px; box-shadow: 0 20px 40px rgba(255, 77, 109, 0.3); max-width: 450px; width: 90%; z-index: 10; border: 3px solid #ffb3c1; }
+        .romantic-img { width: 100%; border-radius: 25px; margin-bottom: 25px; border: 5px solid #ff758f; }
+        h1 { color: #ff4d6d; font-size: 2.2rem; margin-bottom: 10px; }
         .nickname { font-size: 1.5rem; color: #c9184a; font-weight: bold; display: block; margin-bottom: 10px; }
         .date { font-size: 1.1rem; color: #ff758f; margin-bottom: 25px; font-weight: bold; background: #fff; padding: 5px 15px; border-radius: 20px; display: inline-block; }
         .buttons { display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; }
-        button { 
-            padding: 15px 35px; 
-            font-size: 18px; 
-            border: none; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            font-weight: bold;
-        }
+        button { padding: 15px 35px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: bold; }
         #yesBtn { background: linear-gradient(45deg, #ff4d6d, #ff758f); color: white; }
-        #yesBtn:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4); }
         #noBtn { background-color: #adb5bd; color: white; }
         #celebration { display: none; z-index: 20; }
-        
-        /* Herz-Animationen */
-        .heart { position: absolute; color: #ff4d6d; font-size: 20px; animation: float 5s infinite linear; opacity: 0.6; pointer-events: none; z-index: 1; }
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg) scale(1); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.5); opacity: 0; }
-        }
-        .pulse { animation: pulse-animation 2s infinite; }
-        @keyframes pulse-animation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        .heart { position: absolute; color: #ff4d6d; animation: float 5s infinite linear; opacity: 0.6; pointer-events: none; }
+        @keyframes float { 0% { transform: translateY(110vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -75,91 +26,57 @@
     <source src="love_bug_has_bitten.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container pulse" id="mainContainer">
-    <img src="IMG_6833.jpg" alt="Abisha & You" class="romantic-img">
+<div class="container" id="mainContainer">
+    <img src="IMG_6833.jpg" class="romantic-img">
     <span class="nickname">Hey Chellam... ❤️</span>
     <h1>Abisha, will you be my Valentine? 🌹</h1>
     <p class="date">✨ 15.02.2025 um 10:00 Uhr ✨</p>
-    
-    <div class="buttons" id="buttonGroup">
+    <div class="buttons">
         <button id="yesBtn" onclick="sayYes()">Ja, ich will! 🥰</button>
         <button id="noBtn" onclick="sayNo()">Nein</button>
     </div>
 </div>
 
 <div id="celebration" class="container">
-    <img src="IMG_6833.jpg" alt="Happy Together" class="romantic-img">
+    <img src="IMG_6833.jpg" class="romantic-img">
     <h1>Juhuu, Chellam! ❤️</h1>
-    <p style="font-size: 1.3rem; color: #ff4d6d;">Du hast mich zum glücklichsten Menschen gemacht!</p>
-    <p>Ich kann unser Date kaum erwarten. ✨</p>
+    <p style="font-size: 1.3rem; color: #ff4d6d;">Ich freue mich riesig!</p>
     <p><b>15.02. | 10:00 Uhr</b></p>
 </div>
 
 <script>
     const song = document.getElementById('loveSong');
-
-    function startMusic() {
-        song.play().catch(e => console.log("Audio Start nach Klick erforderlich"));
-    }
-
+    function startMusic() { song.play().catch(() => {}); }
+    
     function createHearts() {
-        const heartIcons = ['❤️', '💖', '💝', '💕', '🌸'];
-        for (let i = 0; i < 15; i++) {
-            setTimeout(() => {
-                let heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                document.body.appendChild(heart);
-                
-                // Entfernen nach Animation
-                setTimeout(() => heart.remove(), 5000);
-            }, i * 300);
+        for (let i = 0; i < 10; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
         }
     }
-
-    // Initialer Start der Herzen
-    setInterval(createHearts, 3000);
-    createHearts();
+    setInterval(createHearts, 2000);
 
     let noCount = 0;
-    const phrases = [
-        "Sicher, Chellam? 🥺",
-        "Überleg nochmal...",
-        "Ganz bestimmt nicht?",
-        "Mein Herz bricht! 💔",
-        "Ich frag ganz lieb...",
-        "Drück doch lieber JA! ✨"
-    ];
-
     function sayNo() {
         startMusic();
-        const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
-        
-        if (noCount < phrases.length) {
-            noBtn.innerText = phrases[noCount];
-        }
-        
-        let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-        yesBtn.style.fontSize = (currentSize + 15) + 'px';
-        yesBtn.style.padding = (currentSize / 2 + 10) + 'px ' + (currentSize + 25) + 'px';
-        
+        const noBtn = document.getElementById('noBtn');
+        if (noCount < 5) noBtn.innerText = "Sicher, Chellam? 🥺";
+        yesBtn.style.fontSize = (parseFloat(window.getComputedStyle(yesBtn).fontSize) + 10) + 'px';
         noCount++;
-        if (noCount > 6) noBtn.style.display = 'none';
+        if(noCount > 4) noBtn.style.display = 'none';
     }
 
     function sayYes() {
         startMusic();
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('celebration').style.display = 'block';
-        
-        // Intensiverer Herzregen bei Erfolg
-        setInterval(createHearts, 1000);
     }
 </script>
-
 </body>
 </html>
