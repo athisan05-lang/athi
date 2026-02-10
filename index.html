@@ -2,22 +2,98 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Für meine Chellam ❤️</title>
     <style>
-        body { font-family: 'Comic Sans MS', cursive; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: radial-gradient(circle, #fff0f3 0%, #ffdde1 100%); text-align: center; overflow-x: hidden; }
-        .container { background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 40px; box-shadow: 0 20px 40px rgba(255, 77, 109, 0.3); max-width: 450px; width: 90%; z-index: 10; border: 3px solid #ffb3c1; }
-        .romantic-img { width: 100%; border-radius: 25px; margin-bottom: 25px; border: 5px solid #ff758f; }
-        h1 { color: #ff4d6d; font-size: 2.2rem; margin-bottom: 10px; }
-        .nickname { font-size: 1.5rem; color: #c9184a; font-weight: bold; display: block; margin-bottom: 10px; }
-        .date { font-size: 1.1rem; color: #ff758f; margin-bottom: 25px; font-weight: bold; background: #fff; padding: 5px 15px; border-radius: 20px; display: inline-block; }
-        .buttons { display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; }
-        button { padding: 15px 35px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: bold; }
-        #yesBtn { background: linear-gradient(45deg, #ff4d6d, #ff758f); color: white; }
-        #noBtn { background-color: #adb5bd; color: white; }
+        body { 
+            font-family: 'Comic Sans MS', 'cursive', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background: radial-gradient(circle, #fff0f3 0%, #ffdde1 100%); 
+            text-align: center;
+            overflow-x: hidden;
+            padding: 10px;
+        }
+        .container { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 25px; 
+            border-radius: 30px; 
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.3); 
+            max-width: 400px;
+            width: 85%;
+            z-index: 10;
+            border: 3px solid #ffb3c1;
+        }
+        .romantic-img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 4px solid #ff758f;
+        }
+        h1 { 
+            color: #ff4d6d; 
+            font-size: 1.6rem; 
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+        .nickname { 
+            font-size: 1.3rem; 
+            color: #c9184a; 
+            font-weight: bold; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        .date { 
+            font-size: 1rem; 
+            color: #ff758f; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            background: #fff; 
+            padding: 8px 12px; 
+            border-radius: 15px; 
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .buttons { 
+            display: flex; 
+            flex-direction: column;
+            gap: 15px; 
+            justify-content: center; 
+            align-items: center; 
+            margin-top: 10px;
+        }
+        button { 
+            width: 80%;
+            padding: 15px; 
+            font-size: 18px; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-weight: bold;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #yesBtn { background: linear-gradient(45deg, #ff4d6d, #ff758f); color: white; z-index: 100; }
+        #noBtn { background-color: #adb5bd; color: white; font-size: 16px; }
         #celebration { display: none; z-index: 20; }
+        
         .heart { position: absolute; color: #ff4d6d; animation: float 5s infinite linear; opacity: 0.6; pointer-events: none; }
-        @keyframes float { 0% { transform: translateY(110vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        @keyframes float {
+            0% { transform: translateY(105vh) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Optimierung für sehr kleine Handys */
+        @media (max-width: 350px) {
+            h1 { font-size: 1.3rem; }
+            .container { padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -27,56 +103,47 @@
 </audio>
 
 <div class="container" id="mainContainer">
-    <img src="IMG_6833.jpg" class="romantic-img">
+    <img src="IMG_6833.jpg" alt="Abisha & You" class="romantic-img">
     <span class="nickname">Hey Chellam... ❤️</span>
     <h1>Abisha, will you be my Valentine? 🌹</h1>
     <p class="date">✨ 15.02.2025 um 10:00 Uhr ✨</p>
-    <div class="buttons">
+    
+    <div class="buttons" id="buttonGroup">
         <button id="yesBtn" onclick="sayYes()">Ja, ich will! 🥰</button>
         <button id="noBtn" onclick="sayNo()">Nein</button>
     </div>
 </div>
 
 <div id="celebration" class="container">
-    <img src="IMG_6833.jpg" class="romantic-img">
+    <img src="IMG_6833.jpg" alt="Happy Together" class="romantic-img">
     <h1>Juhuu, Chellam! ❤️</h1>
-    <p style="font-size: 1.3rem; color: #ff4d6d;">Ich freue mich riesig!</p>
+    <p style="font-size: 1.2rem; color: #ff4d6d; font-weight: bold;">Ich freue mich riesig auf unser Date!</p>
     <p><b>15.02. | 10:00 Uhr</b></p>
+    <p style="font-size: 0.9rem;">(Ich hab dich lieb! ✨)</p>
 </div>
 
 <script>
     const song = document.getElementById('loveSong');
-    function startMusic() { song.play().catch(() => {}); }
-    
-    function createHearts() {
-        for (let i = 0; i < 10; i++) {
-            let heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-    }
-    setInterval(createHearts, 2000);
-
     let noCount = 0;
-    function sayNo() {
-        startMusic();
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        if (noCount < 5) noBtn.innerText = "Sicher, Chellam? 🥺";
-        yesBtn.style.fontSize = (parseFloat(window.getComputedStyle(yesBtn).fontSize) + 10) + 'px';
-        noCount++;
-        if(noCount > 4) noBtn.style.display = 'none';
+    
+    const phrases = [
+        "Nein? Wirklich, Chellam? 🥺",
+        "Überleg mal ganz kurz...",
+        "Das war der falsche Button! 🤭",
+        "Mein Herz weint... 💔",
+        "Ich frag ganz, ganz lieb!",
+        "Chellam, drück doch JA! ✨",
+        "Guck mal wie groß JA wird!",
+        "Gleich passt JA nicht mehr aufs Handy!",
+        "Jetzt gibt's nur noch JA! ❤️"
+    ];
+
+    function startMusic() {
+        song.play().catch(e => console.log("Klick nötig"));
     }
 
-    function sayYes() {
-        startMusic();
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('celebration').style.display = 'block';
-    }
-</script>
-</body>
-</html>
+    function createHearts() {
+        const heartIcons = ['❤️', '💖', '💝', '💕'];
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = heart
