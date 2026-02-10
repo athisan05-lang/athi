@@ -49,15 +49,21 @@
             margin-bottom: 5px; 
         }
         .date { 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             color: #ff758f; 
-            margin-bottom: 20px; 
+            margin-bottom: 15px; 
             font-weight: bold; 
             background: #fff; 
             padding: 8px 12px; 
             border-radius: 15px; 
             display: inline-block;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .info-text {
+            font-size: 0.9rem;
+            color: #c9184a;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
         .buttons { 
             display: flex; 
@@ -86,103 +92,4 @@
         .heart { position: absolute; color: #ff4d6d; animation: float 5s infinite linear; opacity: 0.6; pointer-events: none; }
         @keyframes float {
             0% { transform: translateY(105vh) rotate(0deg) scale(1); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
-        }
-
-        /* Optimierung für sehr kleine Handys */
-        @media (max-width: 350px) {
-            h1 { font-size: 1.3rem; }
-            .container { padding: 15px; }
-        }
-    </style>
-</head>
-<body>
-
-<audio id="loveSong" loop>
-    <source src="love_bug_has_bitten.mp3" type="audio/mpeg">
-</audio>
-
-<div class="container" id="mainContainer">
-    <img src="IMG_6833.jpg" alt="Abisha & You" class="romantic-img">
-    <span class="nickname">Hey Chellam... ❤️</span>
-    <h1>Abisha, will you be my Valentine? 🌹</h1>
-    <p class="date">✨ 15.02.2025 um 10:00 Uhr ✨</p>
-    
-    <div class="buttons" id="buttonGroup">
-        <button id="yesBtn" onclick="sayYes()">Ja, ich will! 🥰</button>
-        <button id="noBtn" onclick="sayNo()">Nein</button>
-    </div>
-</div>
-
-<div id="celebration" class="container">
-    <img src="IMG_6833.jpg" alt="Happy Together" class="romantic-img">
-    <h1>Juhuu, Chellam! ❤️</h1>
-    <p style="font-size: 1.2rem; color: #ff4d6d; font-weight: bold;">Ich freue mich riesig auf unser Date!</p>
-    <p><b>15.02. | 10:00 Uhr</b></p>
-    <p style="font-size: 0.9rem;">(Ich hab dich lieb! ✨)</p>
-</div>
-
-<script>
-    const song = document.getElementById('loveSong');
-    let noCount = 0;
-    
-    const phrases = [
-        "Nein? Wirklich, Chellam? 🥺",
-        "Überleg mal ganz kurz...",
-        "Das war der falsche Button! 🤭",
-        "Mein Herz weint... 💔",
-        "Ich frag ganz, ganz lieb!",
-        "Chellam, drück doch JA! ✨",
-        "Guck mal wie groß JA wird!",
-        "Gleich passt JA nicht mehr aufs Handy!",
-        "Jetzt gibt's nur noch JA! ❤️"
-    ];
-
-    function startMusic() {
-        song.play().catch(e => console.log("Klick nötig"));
-    }
-
-    function createHearts() {
-        const heartIcons = ['❤️', '💖', '💝', '💕'];
-        let heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }
-    setInterval(createHearts, 1000);
-
-    function sayNo() {
-        startMusic();
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        
-        if (noCount < phrases.length) {
-            noBtn.innerText = phrases[noCount];
-        } else {
-            noBtn.style.display = 'none';
-        }
-        
-        // Ja-Button wird größer
-        let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-        if (currentSize < 60) { // Limit damit es nicht den Screen sprengt
-            yesBtn.style.fontSize = (currentSize + 8) + 'px';
-            yesBtn.style.padding = (currentSize / 2 + 5) + 'px';
-        }
-        
-        noCount++;
-    }
-
-    function sayYes() {
-        startMusic();
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('celebration').style.display = 'block';
-        setInterval(createHearts, 300); // Viel mehr Herzen beim Erfolg!
-    }
-</script>
-
-</body>
-</html>
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2
