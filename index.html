@@ -146,4 +146,43 @@
         const heartIcons = ['❤️', '💖', '💝', '💕'];
         let heart = document.createElement('div');
         heart.className = 'heart';
-        heart.innerHTML = heart
+        heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHearts, 1000);
+
+    function sayNo() {
+        startMusic();
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        
+        if (noCount < phrases.length) {
+            noBtn.innerText = phrases[noCount];
+        } else {
+            noBtn.style.display = 'none';
+        }
+        
+        // Ja-Button wird größer
+        let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        if (currentSize < 60) { // Limit damit es nicht den Screen sprengt
+            yesBtn.style.fontSize = (currentSize + 8) + 'px';
+            yesBtn.style.padding = (currentSize / 2 + 5) + 'px';
+        }
+        
+        noCount++;
+    }
+
+    function sayYes() {
+        startMusic();
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('celebration').style.display = 'block';
+        setInterval(createHearts, 300); // Viel mehr Herzen beim Erfolg!
+    }
+</script>
+
+</body>
+</html>
